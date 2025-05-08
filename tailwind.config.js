@@ -6,16 +6,10 @@ export default {
   ],
   theme: {
     extend: {
- fontFamily: {
-  Bungee: ['Bungee Tint', 'sans-serif'],
+      fontFamily: {
+        myfont: ['MyCustomFont', 'sans-serif'],
       },
-
-      
     },
-
-
-
-
   },
   plugins: [],
 }

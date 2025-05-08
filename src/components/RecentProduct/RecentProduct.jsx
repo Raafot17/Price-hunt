@@ -9,9 +9,14 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
+import bgr from '/src/assets/back2.png'
+import bggr from '/src/assets/Rectangle.png'
+import Navbar from '../Navbar/Navbar';
+
 
 
 export default function RecentProduct() {
+
 
 const [price, setprice] = useState()
 const [productUrls, setProductUrls] = useState(null);
@@ -20,7 +25,13 @@ const [ApiError, setApiError] = useState("")
 const [showResult, setShowResult] = useState(false);
 const [showLinks, setShowLinks] = useState(false);
 
-
+  const handleClick = () => {
+    setLoading(true);
+    // محاكاة تحميل مثلاً 2 ثانية
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }
 
 function submitfun(values){
   setloading(true)
@@ -55,12 +66,12 @@ function handleReset() {
 }
 
 let myValidation = yup.object().shape({
-  type:yup.string().min(3,"min length is 3").max(20 ,"max length is 20").required("type is required"),
-  color:yup.string().min(3,"min length is 3").max(20 ,"max length is 20").required("color is required"),
-  brand:yup.string().min(3,"min length is 3").max(20 ,"max length is 20").required("brand is required"),
-  material:yup.string().min(3,"min length is 3").max(20 ,"max length is 20").required("material is required"),
-  style:yup.string().min(3,"min length is 3").max(20 ,"max length is 20").required("style is required"),
-  state:yup.string().min(3,"min length is 3").max(20 ,"max length is 20").required("state is required")
+  type:yup.string().min(3,"min length is 3").max(20 ,"max length is 20"),
+  color:yup.string().min(3,"min length is 3").max(20 ,"max length is 20") ,
+  brand:yup.string().min(3,"min length is 3").max(20 ,"max length is 20"),
+  material:yup.string().min(3,"min length is 3").max(20 ,"max length is 20"),
+  style:yup.string().min(3,"min length is 3").max(20 ,"max length is 20"),
+  state:yup.string().min(3,"min length is 3").max(20 ,"max length is 20") 
 });
 
 
@@ -75,135 +86,256 @@ let formik= useFormik({
     state: ""
 },
 validationSchema:myValidation ,
+validateOnChange: false, // ✅ ما يتحققش أثناء الكتابة
+validateOnBlur: false, 
 onSubmit : submitfun,
 })
-
-const sliderSettings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  autoplay: true,
-  autoplaySpeed: 3000,
-  arrows: false,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
 
   return ( 
     <>
 
 
-{/* 
-    <Marquee pauseOnHover speed={100} gradient={true} className="text-xl font-semibold mb-5 text-gray-500">
-    The price depends on the product condition, type, color, brand, material and state    </Marquee> */}
     
-    <div className='w-full  ' >
-    <div className="bg-gradient-to-br from-green-100 to-emerald-300 flex flex-col justify-center items-center text-center p-6">
+    <div
+  style={{
+    backgroundImage: `url(${bgr})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}
+  className='w-full relative min-h-screen m-0 p-0'
+>
+<Navbar/>
+<h1 className="font-myfont absolute 
+  top-56 left-[18%] text-5xl   // موبايل افتراضي
+  sm:top-44 sm:left-[23%] sm:text-7xl  // تابلت صغير
+  md:top-40 md:left-[21%] md:text-8xl  // تابلت أكبر
+  lg:top-40 lg:left-[28.2%] lg:text-8xl  // شاشات متوسطة
+  xl:top-40 xl:left-[32.8%] xl:text-8xl  // لابتوب وفوق
+  font-medium text-white">
+  Price Hunter
+</h1>
 
-<motion.h1
-        className="text-5xl font-bold text-green-900 mb-6"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-      Welcome to <span className="text-emerald-700">Price Hunter</span> 🛍️
-      </motion.h1>
 
-      <motion.div
-        className="max-w-xl mb-6 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-      >
-        <Slider {...sliderSettings}>
-          <div><p className="text-lg text-green-800">اكتشف السعر المثالي لمنتجك بكل سهولة</p></div>
-          <div><p className="text-lg text-green-800">أدخل التفاصيل... واحصل على السعر المتوقع</p></div>
-          <div><p className="text-lg text-green-800">سريع، ذكي، ودقيق 🔍</p></div>
-        </Slider>
-      </motion.div>
-</div>
-    <form onSubmit={formik.handleSubmit} className="w-full max-w-xl bg-slate-100  shadow-lg rounded-sm px-5 py-5 my-10 ps-0 mx-auto mt-10 space-y-4">
-  
-  
-  <div className="flex items-center   space-x-0 ">
-      <label htmlFor="type" className="  w-36  after:content-['*'] after:text-red-500 before:ml-1 text-xl text-gray-700">type</label>
+  <div className=' mx-auto mt-40 p-16   min-h-[600px] rounded-xl shadow-2xl'  style={{
+      
+      maxWidth: '32.5rem',
+      backgroundImage: `url(${bggr})`,
+        backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
     
-      <input required name='type' value={formik.values.type} onChange={formik.handleChange} onBlur={formik.handleBlur} 
-       type="text" id="type" className="flex-1 p-2 border rounded-md focus:outline-none focus:ring-2  focus:ring-blue-400 "/>
-  </div>
+      }} >
+      <h2 className='text-3xl font-bold  text-white'>
+      Price Prdicion
+      </h2>
+          <h1 className=' text-white '>manual</h1>
+  
 
-{formik.errors.type && formik.touched.type ?        <div className="  text-sm text-red-800 " role="alert">
-  <span className="font-medium  ">{formik.errors.type}</span> 
+
+
+   <div className={`transition duration-500 ${showResult ? 'blur-sm pointer-events-none' : ''}`}>
+
+          <form
+  onSubmit={formik.handleSubmit}
+  className={`max-w-md mx-auto px-10 min-h-[500px] transition duration-300 ${
+    showResult ? 'blur-sm pointer-events-none select-none' : ''
+  }`}
+>
+{/* type */}
+
+          <div className="relative z-0 w-full mb-5 group">
+  <input
+    type="text"
+    name="type"
+    id="type"
+    required
+    placeholder=" " 
+    value={formik.values.type}
+    onChange={formik.handleChange}
+    onBlur={formik.handleBlur}
+    className="peer block py-2.5 px-0 w-full text-xl text-white bg-transparent border-0 border-b-[1px] border-[#1E1E1E]  appearance-none dark:text-white dark:border-gray-600 focus:outline-none "
+  />
+  <label
+    htmlFor="type"
+    className="absolute text-lg text-white dark:text-gray-400 duration-300 transform top-0 left-0 origin-[0] scale-100 translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-valid:scale-75 peer-valid:-translate-y-4"
+  >
+    Type
+  </label>
+
+{formik.errors.type && formik.touched.type ?        <div className="  text-xl text-red-800 " role="alert">
+  <span className="font-medium">{formik.errors.type}</span> 
 </div>:null}
   
+</div>
 
 
 
 
-  <div className="flex items-center space-x-0">
-      <label htmlFor="color" className="  w-36  after:content-['*'] after:text-red-500 before:ml-1 text-xl text-gray-700">color</label>
-      <input required name='color' value={formik.values.color} onChange={formik.handleChange} onBlur={formik.handleBlur}
-       type="text" id="color" className="flex-1 p-2  border rounded-md focus:outline-none focus:ring-2  focus:ring-blue-400 "/>
-  
-  </div>
-  {formik.errors.color && formik.touched.color ?        <div className="  text-sm text-red-800 " role="alert">
+{/* color  */}
+  <div className="relative z-0 w-full mb-5 group">
+  <input
+    type="text"
+    name="color"
+    id="color"
+    required
+    placeholder=" "
+    value={formik.values.color}
+    onChange={formik.handleChange}
+    onBlur={formik.handleBlur}
+    className="peer block py-2.5 px-0 w-full text-xl text-white bg-transparent border-0 border-b-[1px] border-[#1E1E1E] appearance-none  focus:outline-none "
+  />
+  <label
+    htmlFor="color"
+    className="absolute text-lg text-white dark:text-gray-400 duration-300 transform top-2 left-0 origin-[0] scale-100 translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-valid:scale-75 peer-valid:-translate-y-4"
+  >
+    Color
+  </label>
+  {formik.errors.color && formik.touched.color ?        <div className="  text-xl text-red-800 " role="alert">
   <span className="font-medium ">{formik.errors.color}</span> 
 </div>:null}
   
-  <div className="flex items-center space-x-0 ">
-      <label htmlFor="brand" className="  w-36  after:content-['*'] after:text-red-500 before:ml-1 text-xl text-gray-700">brand</label>
-      <input required name='brand' value={formik.values.brand} onChange={formik.handleChange} onBlur={formik.handleBlur}
-       type="text" id="brand" className="flex-1 p-2  border rounded-md focus:outline-none focus:ring-2  focus:ring-blue-400 "/>
-  
-  </div>
-  {formik.errors.brand && formik.touched.brand?        <div className="  text-sm text-red-800 " role="alert">
+</div>
+{/* brand */}
+
+<div className="relative z-0 w-full mb-5 group">
+  <input
+    type="text"
+    name="brand"
+    id="brand"
+    required
+    placeholder=" "
+    value={formik.values.brand}
+    onChange={formik.handleChange}
+    onBlur={formik.handleBlur}
+    className="peer block py-2.5 px-0 w-full text-xl text-white bg-transparent border-0 border-b-[1px] border-[#1E1E1E]  appearance-none dark:text-white dark:border-gray-600 focus:outline-none "
+  />
+  <label
+    htmlFor="brand"
+    className="absolute text-lg text-white dark:text-gray-400 duration-300 transform top-2 left-0 origin-[0] scale-100 translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-valid:scale-75 peer-valid:-translate-y-4"
+  >
+    Brand
+  </label>
+  {formik.errors.brand && formik.touched.brand?        <div className="  text-xl text-red-800 " role="alert">
   <span className="font-medium ">{formik.errors.brand}</span> 
 </div>:null}
   
-  <div className="flex items-center space-x-0">
-      <label htmlFor="material" className="  w-36  after:content-['*'] after:text-red-500 before:ml-1 text-xl text-gray-700">material</label>
-      <input required 
-      name='material' value={formik.values.material} onChange={formik.handleChange} onBlur={formik.handleBlur}
-      type="text" id="material" className="flex-1 p-2 border rounded-md focus:outline-none focus:ring-2  focus:ring-blue-400 "/>
- 
-  </div>
+</div>
+  {/* material */}
+<div className="relative z-0 w-full mb-5 group">
+  <input
+    type="text"
+    name="material"
+    id="material"
+    required
+    placeholder=" "
+    value={formik.values.material}
+    onChange={formik.handleChange}
+    onBlur={formik.handleBlur}
+    className="peer block py-2.5 px-0 w-full text-xl text-white bg-transparent border-0 border-b-[1px] border-[#1E1E1E]  appearance-none dark:text-white dark:border-gray-600 focus:outline-none "
+  />
+  <label
+    htmlFor="material"
+    className="absolute text-lg text-white dark:text-gray-400 duration-300 transform top-2 left-0 origin-[0] scale-100 translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-valid:scale-75 peer-valid:-translate-y-4"
+  >
+    Material
+  </label>
  {formik.errors.material && formik.touched.material ?       
-  <div className="  text-sm text-red-800 " role="alert">
+  <div className="  text-xl text-red-800 " role="alert">
   <span className="font-medium ">{formik.errors.material}</span> 
 </div>:null}
-  
-  <div className="mb-5 flex items-center  space-x-0">
-  
-      <label htmlFor="style" className=" w-36  after:content-['*'] after:text-red-500 before:ml-1 text-xl text-gray-700">style</label>
-      <input required
-       name='style' value={formik.values.style} onChange={formik.handleChange} onBlur={formik.handleBlur}
-       type="text" id="style" className="flex-1 p-2  border rounded-md focus:outline-none focus:ring-2  focus:ring-blue-400 "/>
- 
-  </div>
- {formik.errors.style && formik.touched.style?        <div className="  text-sm text-red-800 " role="alert">
-  <span className="font-medium ">{formik.errors.style}</span> 
+</div>
+
+
+
+{/* style */}
+
+<div className="relative z-0 w-full mb-5 group">
+  <input
+    type="text"
+    name="style"
+    id="style"
+    required
+    placeholder=" "
+    value={formik.values.style}
+    onChange={formik.handleChange}
+    onBlur={formik.handleBlur}
+    className="peer block py-2.5 px-0 w-full text-xl text-white bg-transparent border-0 border-b-[1px] border-[#1E1E1E]  appearance-none dark:text-white dark:border-gray-600 focus:outline-none "
+  />
+  <label
+    htmlFor="style"
+    className="absolute text-lg text-white dark:text-gray-400 duration-300 transform top-2 left-0 origin-[0] scale-100 translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-valid:scale-75 peer-valid:-translate-y-4"
+  >
+    Style
+  </label>
+ {formik.errors.style && formik.touched.style?        <div className="  text-xl text-red-800 " role="alert">
+  <span className="font-medium">{formik.errors.style}</span> 
 </div>:null}
-  <div className="flex  space-x-0 ">
-      <label htmlFor="state" className=" w-36  after:content-['*'] after:text-red-500 before:ml-1 text-xl text-gray-700  ">state</label>
+</div>
 
-
-      <input required  name='state' value={formik.values.state} onChange={formik.handleChange} onBlur={formik.handleBlur}
-       type="text" id="state" className="flex-1 p-2  border rounded-md focus:outline-none focus:ring-2  focus:ring-blue-400 "/>
-  
-  </div>
-  
-  {formik.errors.state  && formik.touched.state?        <div className="  text-sm text-red-800 " role="alert">
+{/* state  */}
+<div className="relative z-0 w-full mb-5 group">
+  <input
+    type="text"
+    name="state"
+    id="state"
+    required
+    placeholder=" "
+    value={formik.values.state}
+    onChange={formik.handleChange}
+    onBlur={formik.handleBlur}
+    className="peer block py-2.5 px-0 w-full text-xl text-white bg-transparent border-0 border-b-[1px] border-[#1E1E1E]  appearance-none dark:text-white dark:border-gray-600 focus:outline-none "
+  />
+  <label
+    htmlFor="state"
+    className="absolute text-lg text-white dark:text-gray-400 duration-300 transform top-2 left-0 origin-[0] scale-100 translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-valid:scale-75 peer-valid:-translate-y-4"
+  >
+    State
+  </label>
+  {formik.errors.state  && formik.touched.state?        <div className="  text-xl text-red-800 " role="alert">
   <span className="font-medium ">{formik.errors.state}</span> 
 </div>:null}
   
+</div>
 
-  <button type="submit" className="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium  rounded-lg text-lg w-auto mx-4 px-7 py-3 text-center">
-     {loading?<i className='fas fa-spinner fa-spin'></i> : "Submit"}  </button>
-
+ {/* button submit */}
+     <button
+      onClick={handleClick}
+      className="text-white bg-[#826300] hover:bg-[#eec233] focus:ring-4 focus:outline-none  font-bold  rounded-lg text-xl w-auto mx-4 px-5 py-2 text-center"
+      disabled={loading}
+    >
+       {loading ? (
+        <div className="flex justify-center items-center">
+        <svg
+          className="animate-spin h-5 w-5 mr-2 text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          />
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+          />
+        </svg>
+loading      </div>
+      ) : (
+"Submit"      )}
+    </button>
      
+
+    {/* button Reset */}
      <button
   onClick={handleReset}
-  className="mt-4 text-2xl text-gray-700 hover:text-gray-900 transition"
+  className="mt-4 text-2xl text-white hover:text-[#826300] transition"
   title="Try Again"
 >
   <i className="fas fa-rotate-right"></i>
@@ -211,33 +343,31 @@ const sliderSettings = {
      
 </form>
 
+  </div>
+  </div>
+  
 
+{/* Result Box */}
 {showResult && (
-  <div className="my-6 p-6 bg-white rounded-2xl shadow-xl text-center w-1/2 mx-auto space-y-4">
+  <div className="absolute top-96 left-1/2 transform -translate-x-1/2 z-50 bg-white p-6 rounded-2xl shadow-2xl w-[90%] max-w-xl">
+    <div className="flex justify-between items-center mb-4">
+      <h3 className="text-2xl font-bold text-gray-800">Predicted Result</h3>
+      <button onClick={() => setShowResult(false)} className="text-red-600 text-2xl font-bold hover:text-red-800">
+        &times;
+      </button>
+    </div>
+
     {ApiError ? (
-      // ✅ في حالة وجود خطأ
-      <p className="text-red-600 text-lg font-semibold">{ApiError}</p>
+      <p className="text-red-600 text-lg font-semibold">
+        {"You wrote something wrong... Try to fix it: " + ApiError.split(" ").slice(-1).join(" ")}
+      </p>
     ) : (
-      // ✅ في حالة النجاح
       <>
-        <h3 className="text-2xl font-semibold text-gray-700">
-    The best predicted price:
-  </h3>
-  <p className="text-xl text-green-600 font-bold">{price} $</p>
-
-  {productUrls ? (
-  <div className="flex gap-3 items-center justify-center">
-  {productUrls.lowest_price_link && (
-          <a
-            href={productUrls.lowest_price_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-emerald-700 text-lg font-bold text-white hover:text-white rounded-xl hover:bg-emerald-800 transition duration-300"
-          >
-            🔻 Lowest Price Link
-          </a>
-        )}
-
+        <p className="text-xl text-green-700 font-bold">The predicted price: {price} $</p>
+      
+      
+        {productUrls && (
+  <div className="mt-4">
     <button
       onClick={() => setShowLinks(!showLinks)}
       className="text-blue-600 font-semibold underline hover:text-blue-800 transition"
@@ -246,43 +376,85 @@ const sliderSettings = {
     </button>
 
     {showLinks && (
-      <>
-      <div className='col-span-2 justify-center space-x-5 '>
+      <div className="mt-4 flex flex-col gap-4">
+        {productUrls.official_store
+ && (
+          <div>
+            <a
+              href={productUrls.official_store
+              }
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 bg-emerald-700 text-white rounded-lg font-semibold hover:bg-emerald-800 inline-block"
+            >
+              official_store
 
-    
-        {productUrls.amazon_search_link && (
-          <a
-            href={productUrls.amazon_search_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-orange-600 text-lg font-bold text-white hover:text-white rounded-xl hover:bg-orange-300 transition duration-300"
-          >
-            🛒 Amazon 
-          </a>
+            </a>
+            <p className="text-sm mt-1 break-words text-gray-600">{productUrls.lowest_price_link}</p>
+          </div>
         )}
-        {productUrls.shein_search_link && (
-          
-          <a
-            href={productUrls.shein_search_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-pink-500 text-lg font-bold text-white hover:text-white rounded-xl hover:bg-pink-300 transition duration-300"
-          >
-            👗 Shein 
-          </a>
+        {productUrls.amazon && (
+          <div>
+            <a
+              href={productUrls.amazon}
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 inline-block"
+            >
+               Amazon
+            </a>
+          </div>
+        )}
+        {productUrls.lowest_price_link
+ && (
+          <div>
+            <a
+              href={productUrls.lowest_price_link
+                }
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 inline-block"
+            >
+               
+lowest price
+
+            </a>
+          </div>
+        )}
+        {productUrls.shein && (
+          <div>
+            <a
+              href={productUrls.shein}
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 bg-pink-500 text-white rounded-lg font-semibold hover:bg-pink-600 inline-block"
+            >
+               Shein
+            </a>
+          </div>
+        )}
+        {productUrls.ebay && (
+          <div>
+            <a
+              href={productUrls.ebay}
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 bg-blue-900 text-white rounded-lg font-semibold hover:bg-blue-950 inline-block"
+            >
+               eBay
+            </a>
+          </div>
         )}
       </div>
-      </>
     )}
   </div>
-) : (
-  <p className="text-red-500">No links available</p>
 )}
 
       </>
     )}
   </div>
 )}
+
     </div>
 
     </>

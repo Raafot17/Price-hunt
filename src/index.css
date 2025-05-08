@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url("./assets/Buick Grunge 1.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+  }
+  
 .loader {
     width: 100px;
     height: 100px;
@@ -29,15 +35,7 @@
     }
 
 
-:root
-{
-    background-color: aliceblue;
-    --main-color:#0aad0a;
-    --light-color:#f0f3f2;
-    --shadow: rgba(145,158,171,.2) 0px 2px 4px -1px,rgba(145,158,171,.14) 0px 4px 5px 0px,rgba(145,158,171,.12) 0px 1px 10px 0px;
-    --rating-color:#ffc908;
-}
-
+ 
 
 .rating-color
 {
