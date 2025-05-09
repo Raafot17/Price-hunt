@@ -75,16 +75,16 @@ let formik = useFormik({
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
     }} 
-    className="w-full h-screen flex justify-end items-center   end-9 ">
+    className="w-full h-screen flex justify-center items-center sm:justify-end sm:items-center">
   
-  <div className="bg-[#FFFFFFBF] rounded-3xl shadow-xl  p-8 max-w-md w-full mr-20">
+  <div className="bg-[#FFFFFFBF] rounded-3xl shadow-xl px-6 w-full max-w-md mx-auto sm:mr-20">
    
   <div className="flex justify-between ">
   
-      <h2 className="  text-lg font-bold ">Welcome to   <span className="text-[#E98E42]">price hunter</span> </h2>
+      <h2 className="  text-lg font-bold mt-4 ">Welcome to   <span className="text-[#E98E42]">price hunter</span> </h2>
      <div>
-     <h2 className=" text-gray-600 ">you have acount? </h2>
-     <Link to={"/login"}> <span className="text-[#E98E42]"> sign in</span> </Link> 
+     <h2 className=" text-gray-600 mt-5 ">you have acount? </h2>
+     <Link to={"/login"}> <span className="text-[#E98E42] "> sign in</span> </Link> 
       </div>
   </div>
       <h2 className="text-5xl font-semibold text-left text-[#000000] ">Register </h2>
@@ -96,7 +96,7 @@ let formik = useFormik({
  
   <div className="relative z-0 w-full  group">
 
-    <label htmlFor="name"   className="block text-lg text-left font-medium mb-2">Enter Your Name</label>
+    <label htmlFor="name"   className="block text-lg text-left font-medium mb-1">Enter Your Name</label>
       <input type="text"
       value={formik.values.name}
       onChange={formik.handleChange}
@@ -112,7 +112,7 @@ let formik = useFormik({
 
   <div className="relative z-0 w-full  group">
 
-    <label htmlFor="email"   className="block text-lg text-left font-medium mb-2">Enter your Email</label>
+    <label htmlFor="email"   className="block text-lg text-left font-medium mb-1">Enter your Email</label>
       <input type="email"
       value={formik.values.email}
       onChange={formik.handleChange}
@@ -128,7 +128,7 @@ let formik = useFormik({
   </div>
 
   <div className="relative z-0 w-full  group">
-    <label htmlFor="password"   className="block text-lg text-left font-medium mb-2">Enter password</label>
+    <label htmlFor="password"   className="block text-lg text-left font-medium mb-1">Enter password</label>
       <input type="password"
       value={formik.values.password}
       onChange={formik.handleChange}
@@ -141,7 +141,7 @@ let formik = useFormik({
 </div>:null}
   </div>
   <div className="relative z-0 w-full  group">
-    <label htmlFor="rePassword"   className="block text-lg text-left font-medium mb-2">Enter rePassword</label>
+    <label htmlFor="rePassword"   className="block text-lg text-left font-medium mb-1">Enter rePassword</label>
       <input type="password"
       value={formik.values.rePassword}
       onChange={formik.handleChange}
@@ -156,7 +156,7 @@ let formik = useFormik({
   </div>
   
   <div className="relative z-0 w-full  group">
-    <label htmlFor="phone"   className="block text-lg text-left font-medium mb-2">Enter your Phone</label>
+    <label htmlFor="phone"   className="block text-lg text-left font-medium mb-1">Enter your Phone</label>
       <input type="tel"
       value={formik.values.phone}
       onChange={formik.handleChange}

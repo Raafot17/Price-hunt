@@ -64,9 +64,9 @@ export default function Login() {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
   }} 
-  className="w-full h-screen flex justify-end items-center   end-9 ">
-
-<div className="bg-[#FFFFFFBF] rounded-3xl shadow-xl  p-8 max-w-md w-full mr-20">
+  className="w-full h-screen flex justify-center items-center sm:justify-end sm:items-center"
+>
+<div className="bg-[#FFFFFFBF] rounded-3xl shadow-xl p-8 w-full max-w-md mx-auto sm:mr-20">
  
 <div className="flex justify-between ">
 
