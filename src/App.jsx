@@ -2,9 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Layout from './components/Layout/Layout';
 import Register from './components/Register/Register';
-import Brands from './components/Brands/Brands';
 import Login from './components/Login/Login';
-
+import Search from './components/Search/Search';
 import Not from './components/Not/Not';
 import UserContextProvider from './Context/UserContext';
 import ProtectedRouter from './components/ProtectedRouter/ProtectedRouter';
@@ -13,7 +12,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import CartContextProvider from './Context/CartContext';
 import { Toaster } from 'react-hot-toast';
 import Home from './components/Home/Home';
-import WelcomePage from './components/Welcome/Welcome';
 import RecentProduct from './components/RecentProduct/RecentProduct';
 
 let query = new QueryClient()
@@ -26,7 +24,7 @@ let x =createBrowserRouter([
   {path:"login", element: <Login/> },
   {path:"register", element:   <Register/>},
   {path:"RecentProduct", element:   <RecentProduct/>},
-  {path:"brands", element: <ProtectedRouter>  <Brands/></ProtectedRouter> },
+  {path:"Search", element: <ProtectedRouter>  <Search/></ProtectedRouter> },
   {path:"*", element:<Not/>},
  ],},
 

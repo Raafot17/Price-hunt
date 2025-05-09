@@ -9,7 +9,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
-import bgr from '/src/assets/back2.png'
+import bgr from '/src/assets/backg.png'
 import bggr from '/src/assets/Rectangle.png'
 import Navbar from '../Navbar/Navbar';
 
@@ -103,25 +103,27 @@ onSubmit : submitfun,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
   }}
-  className='w-full relative min-h-screen m-0 p-0'
+  className='w-full  min-h-screen m-0 p-0'
 >
 <Navbar/>
-<h1 className="font-myfont absolute 
-  top-56 left-[18%] text-5xl   // موبايل افتراضي
-  sm:top-44 sm:left-[23%] sm:text-7xl  // تابلت صغير
-  md:top-40 md:left-[21%] md:text-8xl  // تابلت أكبر
-  lg:top-40 lg:left-[28.2%] lg:text-8xl  // شاشات متوسطة
-  xl:top-40 xl:left-[32.8%] xl:text-8xl  // لابتوب وفوق
-  font-medium text-white">
+<h1 className="font-myfont text-center  font-medium text-white
+  // top-56 left-[18%] text-5xl   // موبايل افتراضي
+  // sm:top-44 sm:left-[23%] sm:text-7xl  // تابلت صغير
+  // md:top-40 md:left-[21%] md:text-8xl  // تابلت أكبر
+  // lg:top-40 lg:left-[28.2%] lg:text-8xl  // شاشات متوسطة
+  // xl:top-40 xl:left-[32.8%] xl:text-8xl  // لابتوب وفوق
+ ">
   Price Hunter
 </h1>
 
 
-  <div className=' mx-auto mt-40 p-16   min-h-[600px] rounded-xl shadow-2xl'  style={{
-      
+  <div className=' mx-auto  p-16   min-h-[600px] rounded-xl shadow-2xl'  style={{
+      width: '100%',
       maxWidth: '32.5rem',
       backgroundImage: `url(${bggr})`,
-        backgroundSize: 'contain',
+      
+        backgroundSize: 'contain', 
+        // backgroundSize: '100% 100%', 
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
     
@@ -385,12 +387,11 @@ loading      </div>
               }
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 bg-emerald-700 text-white rounded-lg font-semibold hover:bg-emerald-800 inline-block"
+              className="px-4 py-2 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 inline-block"
             >
               official_store
 
             </a>
-            <p className="text-sm mt-1 break-words text-gray-600">{productUrls.lowest_price_link}</p>
           </div>
         )}
         {productUrls.amazon && (
@@ -427,7 +428,7 @@ lowest price
               href={productUrls.shein}
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 bg-pink-500 text-white rounded-lg font-semibold hover:bg-pink-600 inline-block"
+              className="px-4 py-2 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 inline-block"
             >
                Shein
             </a>
@@ -439,7 +440,7 @@ lowest price
               href={productUrls.ebay}
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 bg-blue-900 text-white rounded-lg font-semibold hover:bg-blue-950 inline-block"
+              className="px-4 py-2 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 inline-block"
             >
                eBay
             </a>
