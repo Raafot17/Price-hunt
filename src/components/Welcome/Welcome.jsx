@@ -23,7 +23,14 @@ export default function WelcomePage() {
   return (
     <>
     
-    <div className="min-h-screen bg-blue-50 flex flex-col items-center justify-center px-4 py-8 space-y-6">
+    <div className="min-h-screen w-full bg-gradient-to-tr from-black via-gray-900 to-amber-200 flex flex-col items-center justify-center px-4 py-8 space-y-6">
+      {/* Start now button */}
+    <Link to="/RecentProduct">
+    <button  className="text-white  bg-[#826300] hover:bg-[#eec233] text-lg px-8 py-3 rounded-full shadow-lg">
+      Start now
+    </button>
+    </Link>
+   
     {/* Project Goal */}
     <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-3xl">
       <div className="flex items-center space-x-3 mb-3">
@@ -127,17 +134,14 @@ export default function WelcomePage() {
             <FaLayerGroup className="text-gray-600 w-5 h-5" />
           </div>
           <h3 className="font-semibold text-gray-800">Supported Materials</h3>
-        </div>
-      
+        </div> 
         <ul class="list-disc text-left space-x-3 flex justify-around list-inside text-gray-600">
        <ul>
        <span></span>
           <li>leather</li>
           <li>denim</li>
-
        </ul>
          <ul>
-       
             <li>cotton</li>
            <li>polyester</li>
          </ul>
@@ -158,13 +162,7 @@ export default function WelcomePage() {
         <li>Display result</li>
       </ol>
     </div>
-  
-    {/* Start now button */}
-    <Link to="/RecentProduct">
-    <button  className="bg-emerald-600 hover:bg-emerald-700 text-white text-lg px-8 py-3 rounded-full shadow-lg">
-      Start now
-    </button>
-    </Link>
+ 
   </div>
     </>
   

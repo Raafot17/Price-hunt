@@ -33,11 +33,9 @@ return (
         <button
           className="text-gray-700 lg:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <i className={`fa-solid ${isMenuOpen ? 'fa-xmark' : 'fa-bars'} text-2xl`} />
+        > <i className={`fa-solid ${isMenuOpen ? 'fa-xmark' : 'fa-bars'} text-2xl`} />
         </button>
-
-        {/* Links Section */}
+       {/* Links Section */}
       {
         UserLogin? <div className={`lg:flex lg:gap-6 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:block w-full lg:w-auto`}>
         <ul className="flex flex-col items-center w-full gap-6 lg:flex-row lg:w-auto">
@@ -46,18 +44,13 @@ return (
         </ul>
       </div> :null
       }  
-        
         {/* Icons and Buttons Section */}
-        <div className="flex items-center gap-4">
-          
+        <div className="flex items-center gap-4">  
           {/* Action Buttons */}
-          
           <div className="flex gap-4">
            {UserLogin? 
            <>
-          
-           </> :null}
-           
+           </> :null}   
            {UserLogin ? (
   <i
     onClick={logout}

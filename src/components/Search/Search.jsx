@@ -31,20 +31,16 @@ export default function Search() {
       >
      <Navbar />
       </section>
-
    <h2 className='text-center text-2xl my-5'>Suggestion</h2>
   <Link to="/RecentProduct">
    <button className='px-5 py-1 font-serif border  rounded-lg'>Manual</button>
   </Link>
-  
       <div className="container text-center  mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-28 gap-4 p-4">
-      {/* الكارت الأول - تقدر تكرره أو تخليه map من array */}
   <div className="w-[230px] mx-auto rounded-[5px] overflow-hidden  bg-white">
     <img
       src={img1}
       alt="تيشيرت قطني"
-      className="w-full h-[350px] object-cover"
-    />
+      className="w-full h-[350px] object-cover"/>
     <div className="p-3">
       <p className="text-sm text-gray-600">ZARA, Cotton, New, Shirt, Casual,Black</p>
       <h2 className="text-lg font-semibold mb-1">55$</h2>
@@ -89,10 +85,9 @@ export default function Search() {
     <div className="p-3">
       <p className="text-sm text-gray-600">H&M, Cotton, Used,Shirt,Casual,White</p>
       <h2 className="text-lg font-semibold mb-1">20$</h2>
-   
     </div>
   </div>
- 
+
   <div className="w-[230px] mx-auto  rounded-[5px] overflow-hidden  bg-white">
     <img
       src={img5}
@@ -102,10 +97,8 @@ export default function Search() {
     <div className="p-3">
       <p className="text-sm text-gray-600">Nike, leather, Used,shoes,Casual,Black</p>
       <h2 className="text-lg font-semibold mb-1">15$</h2>
-   
     </div>
   </div>
- 
   <div className="w-[230px] mx-auto  rounded-[5px] overflow-hidden  bg-white">
     <img
       src={img6}
@@ -115,7 +108,6 @@ export default function Search() {
     <div className="p-3">
       <p className="text-sm text-gray-600">H&m, Cotton, New,Shirt,Casual,White</p>
       <h2 className="text-lg font-semibold mb-1">40$</h2>
-   
     </div>
   </div>
  
@@ -160,8 +152,6 @@ export default function Search() {
    
     </div>
   </div>
- 
- 
   <div className="w-[230px] mx-auto  rounded-[5px] overflow-hidden  bg-white">
     <img
       src={img10}
@@ -171,8 +161,7 @@ export default function Search() {
     <div className="p-3">
       <p className="text-sm text-gray-600">Zara, lezer, New,jacket
       ,Casual,Brown</p>
-      <h2 className="text-lg font-semibold mb-1">62$</h2>
-   
+      <h2 className="text-lg font-semibold mb-1">62$</h2> 
     </div>
   </div>
  

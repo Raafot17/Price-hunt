@@ -124,9 +124,7 @@ let formik = useFormik({
   {formik.errors.email && formik.touched.email? <div className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
   <span className="font-medium">{formik.errors.email}</span> 
 </div>:null}
- 
   </div>
-
   <div className="relative z-0 w-full  group">
     <label htmlFor="password"   className="block text-lg text-left font-medium mb-1">Enter password</label>
       <input type="password"
@@ -163,13 +161,10 @@ let formik = useFormik({
       onBlur={formik.handleBlur}
        name="phone"
         id="phone"className="w-full px-4 py-2 border text-white bg-transparent rounded-md border-gray-400 focus:outline-none focus:ring-2 " placeholder=" " required />
-  
   {formik.errors.phone && formik.touched.phone? <div className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
   <span className="font-medium">{formik.errors.phone}</span> 
 </div>:null}
-  
   </div>
-
 <div className='flex justify-center items-center'>
 <button type="submit" className="text-white mt-2 bg-[#E98E42] hover:bg-[#f3aa6e] focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm w-full sm:w-auto px-16 py-2.5 text-center">
     {loading? <i className='fas fa-spinner fa-spin '></i> : "Register"}
